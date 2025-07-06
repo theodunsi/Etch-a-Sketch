@@ -13,8 +13,38 @@ for(let i = 0; i < 256; i++) {
     square.style.backgroundColor = "black";
     });
 }
+
 function resetGrid() {
-    let userInput = prompt("How many squares per side?");
+    //Prompt user for a valid number
+    let userInput;
+    do {
+    userInput = prompt("How many squares per side?");
+    }
+    while (userInput < 10 || userInput > 100 || isNaN(userInput));
+
+    //Delete old grid
+    gridContainer.innerHTML = '';
+    
+    //New grid using userInput
+    for(let i = 0; i < (userInput ** 2); i++) {
+        const square = document.createElement("div");
+        square.style.width = (640 / userInput) + 'px';
+        square.style.height = (640 / userInput) + 'px';
+        square.style.backgroundColor = "black";
+        gridContainer.appendChild(square);
+
+        square.addEventListener ("mouseover", () => {
+        square.style.backgroundColor = "white";
+        });
+
+        square.addEventListener ("mouseout", () => {
+        square.style.backgroundColor = "black";
+        });
+    }
+    
+
+    
+
 }
 
 const resetButton = document.querySelector(".resetButton");
