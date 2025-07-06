@@ -5,16 +5,18 @@ for(let i = 0; i < 256; i++) {
     square.classList.add("square");
     gridContainer.appendChild(square);
  
-    square.addEventListener ("mouseover", () => {
-    square.style.backgroundColor = "white";
-    });
-
-    square.addEventListener ("mouseout", () => {
-    square.style.backgroundColor = "black";
+    square.addEventListener("mouseover", () => {
+        const r = Math.floor(Math.random() * 256); 
+        const g = Math.floor(Math.random() * 256); 
+        const b = Math.floor(Math.random() * 256); 
+        square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
     });
 }
 
-function resetGrid() {
+const newSize = document.querySelector(".newSize");
+const resetButton = document.querySelector(".resetButton");
+
+function newGrid() {
     //Prompt user for a valid number
     let userInput;
     do {
@@ -28,8 +30,9 @@ function resetGrid() {
     //New grid using userInput
     for(let i = 0; i < (userInput ** 2); i++) {
         const square = document.createElement("div");
-        square.style.width = (640 / userInput) + 'px';
-        square.style.height = (640 / userInput) + 'px';
+        square.classList.add("square");
+        square.style.width = (520 / userInput) + 'px';
+        square.style.height = (520 / userInput) + 'px';
         square.style.backgroundColor = "black";
         gridContainer.appendChild(square);
 
@@ -39,18 +42,18 @@ function resetGrid() {
         const b = Math.floor(Math.random() * 256); 
         square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         });
-
-        square.addEventListener ("mouseout", () => {
-        square.style.backgroundColor = "black";
-        });
     }
-    
-
-    
-
 }
 
-const resetButton = document.querySelector(".resetButton");
 
-resetButton.addEventListener("click", resetGrid)
+
+function resetGrid() {
+    const squares = document.querySelectorAll('.square');
+    for(let i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = "black";
+    }
+}
+
+resetButton.addEventListener("click", resetGrid);
+newSize.addEventListener("click", newGrid);
 

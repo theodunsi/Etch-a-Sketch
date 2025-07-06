@@ -5,11 +5,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: black;
 }
 
 .square {
-    width: 40px;
-    height: 40px;
+    width: 32.5px;
+    height: 32.5px;
     background-color: black;
     flex-shrink: 0;
 }
@@ -17,13 +18,21 @@ body {
 .gridContainer {
     display: flex;
     flex-wrap: wrap;
-    width: 640px;
-    height: 640px;
+    width: 520px;
+    height: 520px;
+    border: 1px white solid;
 }
 
-.resetButton {
+ button{
     margin-bottom: 40px;
     padding: 8px 12px;
-    background-color: black;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+}
+
+h2 {
     color: white;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
 }
